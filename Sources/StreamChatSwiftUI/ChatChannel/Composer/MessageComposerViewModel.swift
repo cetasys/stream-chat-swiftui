@@ -173,7 +173,7 @@ open class MessageComposerViewModel: ObservableObject {
         listenToCooldownUpdates()
     }
     
-    public func sendMessage(
+    open func sendMessage(
         quotedMessage: ChatMessage?,
         editedMessage: ChatMessage?,
         isSilent: Bool = false,
