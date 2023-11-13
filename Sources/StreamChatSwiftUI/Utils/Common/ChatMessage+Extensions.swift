@@ -83,7 +83,7 @@ public extension ChatMessage {
     }
 
     var adjustedText: String {
-        InjectedValues[\.utils].composerConfig.adjustMessageOnRead(text)
+        InjectedValues[\.utils].composerConfig.adjustMessageOnRead(self)
     }
     
     var isRightAligned: Bool {

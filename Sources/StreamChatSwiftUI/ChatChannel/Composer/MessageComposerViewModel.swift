@@ -151,7 +151,7 @@ open class MessageComposerViewModel: ObservableObject {
     }
     
     var adjustedText: String {
-        utils.composerConfig.adjustMessageOnSend(text)
+        utils.composerConfig.adjustMessageOnSend(text, channelController)
     }
     
     private var totalAttachmentsCount: Int {

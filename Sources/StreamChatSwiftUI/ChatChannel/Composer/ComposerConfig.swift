@@ -14,8 +14,8 @@ public struct ComposerConfig {
     public var inputFont: UIFont
     public var gallerySupportedTypes: GallerySupportedTypes
     public var inputPaddingsConfig: PaddingsConfig
-    public var adjustMessageOnSend: (String) -> (String)
-    public var adjustMessageOnRead: (String) -> (String)
+    public var adjustMessageOnSend: (String, ChatChannelController) -> (String)
+    public var adjustMessageOnRead: (ChatMessage) -> (String)
     public var attachmentPayloadConverter: (ChatMessage) -> [AnyAttachmentPayload]
 
     public init(
@@ -25,8 +25,8 @@ public struct ComposerConfig {
         inputFont: UIFont = UIFont.preferredFont(forTextStyle: .body),
         gallerySupportedTypes: GallerySupportedTypes = .imagesAndVideo,
         inputPaddingsConfig: PaddingsConfig = .composerInput,
-        adjustMessageOnSend: @escaping (String) -> (String) = { $0 },
-        adjustMessageOnRead: @escaping (String) -> (String) = { $0 },
+        adjustMessageOnSend: @escaping (String, ChatChannelController) -> (String) = { text,controller in text },
+        adjustMessageOnRead: @escaping (ChatMessage) -> (String) = { message in message.text },
         attachmentPayloadConverter: @escaping (ChatMessage) -> [AnyAttachmentPayload]
             = ComposerConfig.defaultAttachmentPayloadConverter
     ) {

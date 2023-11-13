@@ -10,10 +10,10 @@ class ChatMessage_AdjustedText_Tests: StreamChatTestCase {
 
     override func setUp() {
         super.setUp()
-        let composerConfig = ComposerConfig(adjustMessageOnSend: { message in
+        let composerConfig = ComposerConfig(adjustMessageOnSend: { message,_ in
             "some prefix \(message)"
         }, adjustMessageOnRead: { message in
-            "bla bla \(message)"
+            "bla bla \(message.text)"
         })
         let utils = Utils(composerConfig: composerConfig)
         streamChat = StreamChat(chatClient: chatClient, utils: utils)
